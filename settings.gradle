@@ -1,0 +1,4 @@
+include ':wxpay'
+include ':dqpay'
+include ':app'
+rootProject.name = "DQPay"
