@@ -1,15 +1,19 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
-//apply plugin: 'com.novoda.bintray-release'
-//publish {
-//    userOrg = 'dashingqi'//bintray.com用户名
-//    groupId = 'com.dashingqi'//jcenter上的路径
-//    artifactId = 'dqpay'//项目名称
-//    publishVersion = '1.0.0'//版本号
-//    desc = 'pay and pay'//描述，不重要
-//}
+publish {
+    repoName = 'pay'
+    userOrg = 'dashingqi'      // bintray注册的用户名
+    groupId = 'com.dashingqi'
+    artifactId = 'dqpay' // bintray创建的package
+    publishVersion = '1.0.0'
+    desc = 'nothing'
+    bintrayUser = 'dashingqi'
+    bintrayKey = LocalBintrayKey()
+    dryRun = false
+}
 
 android {
     compileSdkVersion 29
