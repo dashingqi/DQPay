@@ -1,3 +1,4 @@
+include ':alipay'
 include ':wxpay'
 include ':dqpay'
 include ':app'
