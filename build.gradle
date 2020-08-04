@@ -34,12 +34,12 @@ tasks.withType(Javadoc) {
     options.addStringOption('encoding', 'UTF-8')
 }
 
-def LocalBintrayKey() {
+def LocalDqPayBintrayKey() {
     Properties properties = new Properties()
     def file = rootProject.file('local.properties')
     if (file.exists()) {
         InputStream inputStream = file.newDataInputStream()
         properties.load(inputStream)
-        properties.getProperty('bintrayKey')
+        properties.getProperty('dqPayBintrayKey')
     }
 }
