@@ -2,13 +2,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.kezong.fat-aar'
 
 publish {
     repoName = 'pay' //仓库名字
     userOrg = 'dashingqi'      // bintray注册的用户名
     groupId = 'com.dashingqi'
     artifactId = 'alipay' // bintray创建的package 仓库下面对应的package名字
-    publishVersion = '0.9.5'
+    publishVersion = '0.9.8'
     desc = 'beta version'
     bintrayUser = 'dashingqi'
     bintrayKey = LocalBintrayKey()
@@ -35,12 +36,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
     // 添加下面的内容
-    compile (name: 'alipaySdk-15.7.9-20200727142846', ext: 'aar')
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    embed (name:'alipaySdk-15.7.9-20200727142846',ext:'aar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -48,5 +55,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.dashingqi:dqpay:1.0.1'
+
 
 }

@@ -8,7 +8,7 @@ publish {
     userOrg = 'dashingqi'      // bintray注册的用户名
     groupId = 'com.dashingqi'
     artifactId = 'wxpay' // bintray创建的package 仓库下面对应的package名字
-    publishVersion = '0.9.5'
+    publishVersion = '0.9.6'
     desc = 'beta version'
     bintrayUser = 'dashingqi'
     bintrayKey = LocalBintrayKey()
