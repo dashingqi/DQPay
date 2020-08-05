@@ -30,15 +30,16 @@ class MainActivity : AppCompatActivity() {
 
         //回调
         var wxPayCall = object : IPayCallback<WXPayInfoBean> {
-            override fun onFail() {
-
-            }
 
             override fun onSuccess(data: WXPayInfoBean) {
 
             }
 
             override fun onCancel() {
+
+            }
+
+            override fun onFail(errorCode: Int, errorMsg: String) {
 
             }
         }
@@ -61,12 +62,12 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            override fun onFail() {
-
-            }
 
             override fun onSuccess(data: AliPayBean) {
 
+            }
+
+            override fun onFail(errorCode: Int, errorMsg: String) {
             }
 
         }
