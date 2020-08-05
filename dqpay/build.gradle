@@ -8,7 +8,7 @@ publish {
     userOrg = 'dashingqi'      // bintray注册的用户名
     groupId = 'com.dashingqi'
     artifactId = 'dqpay' // bintray创建的package
-    publishVersion = '1.0.1'
+    publishVersion = '0.9.9.3'
     desc = 'update'
     bintrayUser = 'dashingqi'
     bintrayKey = LocalBintrayKey()

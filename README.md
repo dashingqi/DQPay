@@ -1,11 +1,10 @@
 ## DQPay使用文档
 - 目前该项目集成了微信支付和支付宝支付
-- 
 
 #### 微信支付使用步骤
 ###### 引入依赖
 ```
-implementation 'com.dashingqi:wxpay:0.9.9'
+implementation 'com.dashingqi:wxpay:0.9.9.3'
 ```
 ###### 新建WxEntryActivity（支付回调的Activity）
 - 新建Activity
@@ -63,7 +62,7 @@ class WxEntryActivity: WXPayActivity() {
 
 ###### 引入依赖
 ```
-implementation 'com.dashingqi:alipay:0.9.9'
+implementation 'com.dashingqi:alipay:0.9.9.3'
 ```
 ###### 发起支付宝支付请求
 - 步骤1：拿到支付请求数据实体

@@ -9,7 +9,7 @@ publish {
     userOrg = 'dashingqi'      // bintray注册的用户名
     groupId = 'com.dashingqi'
     artifactId = 'alipay' // bintray创建的package 仓库下面对应的package名字
-    publishVersion = '0.9.9'
+    publishVersion = '0.9.9.3'
     desc = 'beta version'
     bintrayUser = 'dashingqi'
     bintrayKey = LocalBintrayKey()
@@ -54,7 +54,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    api 'com.dashingqi:dqpay:1.0.1'
+    api 'com.dashingqi:dqpay:0.9.9.3'
 
 
 }

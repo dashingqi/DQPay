@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import com.dashingqi.wxpay.impl.WXPay
+import com.tencent.mm.opensdk.constants.ConstantsAPI
 import com.tencent.mm.opensdk.modelbase.BaseReq
 import com.tencent.mm.opensdk.modelbase.BaseResp
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
@@ -29,8 +30,18 @@ open class WXPayActivity : Activity(), IWXAPIEventHandler {
      * 支付结果的回调
      */
     override fun onResp(p0: BaseResp?) {
-        if (p0?.type == 1) {
-            WXPay.mPayCallBack.onSuccess(WXPay.mPayInfo)
+        if (p0?.type == ConstantsAPI.COMMAND_PAY_BY_WX) {
+            when (p0.errCode) {
+                BaseResp.ErrCode.ERR_OK -> {
+                    WXPay.mPayCallBack.onSuccess(WXPay.mPayInfo)
+                }
+                BaseResp.ErrCode.ERR_USER_CANCEL -> {
+                    WXPay.mPayCallBack.onCancel()
+                }
+                BaseResp.ErrCode.ERR_COMM -> {
+                    WXPay.mPayCallBack.onFail(p0.errCode, p0.errStr)
+                }
+            }
             finish()
         }
     }

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import com.dashingqi.dqpay.callback.IPayCallback
 import com.dashingqi.dqpay.strategy.IPayStrategy
+import com.dashingqi.wxpay.bean.WXPayErrorCode
 import com.dashingqi.wxpay.bean.WXPayInfoBean
 import com.tencent.mm.opensdk.modelpay.PayReq
 import com.tencent.mm.opensdk.openapi.IWXAPI
@@ -18,18 +19,23 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory
 object WXPay : IPayStrategy<WXPayInfoBean> {
 
     lateinit var mPayCallBack: IPayCallback<WXPayInfoBean>
-    lateinit var mWxApi: IWXAPI
-    var isHasInitial: Boolean = false
     lateinit var mPayInfo: WXPayInfoBean
-
+    lateinit var mContext: Context
+    lateinit var mAppId: String
+    private val mWxApi: IWXAPI by lazy {
+        var wxApi = WXAPIFactory.createWXAPI(mContext, mAppId)
+        wxApi.registerApp(mAppId)
+        wxApi
+    }
 
     /**
      * 初始化微信支付，向微信支付注册app
+     * context:上下文环境
+     * appId 应用ID
      */
     fun initWxPay(context: Context, appId: String) {
-        mWxApi = WXAPIFactory.createWXAPI(context, appId)
-        mWxApi.registerApp(appId)
-        isHasInitial = true
+        mContext = context
+        mAppId = appId
     }
 
     fun getWxApi(): IWXAPI {
@@ -51,13 +57,8 @@ object WXPay : IPayStrategy<WXPayInfoBean> {
         }
 
         if (payInfo.appId == "" || payInfo.partnerId == "" || payInfo.sign == "" || payInfo.prepayId == "") {
-            mPayCallBack.onFail()
+            mPayCallBack.onFail(WXPayErrorCode.WX_PAY_ORDER_PARAMS_ERROR,WXPayErrorCode.getErrorStr(WXPayErrorCode.WX_PAY_ORDER_PARAMS_ERROR)!!)
             return
-        }
-
-        if (!isHasInitial) {
-            mWxApi = WXAPIFactory.createWXAPI(context, payInfo.appId)
-            mWxApi.registerApp(payInfo.appId)
         }
 
         //发起微信支付

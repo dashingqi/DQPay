@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Message
 import com.alipay.sdk.app.PayTask
 import com.dashingqi.alipay.bean.AliPayBean
+import com.dashingqi.alipay.bean.AliPayErrorCode
 import com.dashingqi.alipay.constant.AliConstant
 import com.dashingqi.dqpay.callback.IPayCallback
 import com.dashingqi.dqpay.strategy.IPayStrategy
@@ -30,7 +31,10 @@ class AliPay : IPayStrategy<AliPayBean> {
         mAliPayCallback = callBack
         mPayInfo = payInfo
         if (payInfo.orderInfo.isNullOrEmpty()) {
-            mAliPayCallback.onFail()
+            mAliPayCallback.onFail(
+                AliPayErrorCode.ALI_PAY_ORDER_PARAMS_ERROR,
+                AliPayErrorCode.getErrorStr(AliPayErrorCode.ALI_PAY_ORDER_PARAMS_ERROR)
+            )
             return
         }
         //支付的任务
@@ -72,7 +76,10 @@ class AliPay : IPayStrategy<AliPayBean> {
                             }
                             else -> {
                                 mAliPayCallback?.let {
-                                    it.onFail()
+                                    it.onFail(
+                                        AliPayErrorCode.ALI_PAY_FAILED_ERROR,
+                                        AliPayErrorCode.getErrorStr(AliPayErrorCode.ALI_PAY_FAILED_ERROR)
+                                    )
                                 }
                             }
                         }

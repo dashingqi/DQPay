@@ -11,9 +11,10 @@ interface IPayCallback<T : IPayInfoBean> {
 
     /**
      * 支付失败
-     *
+     * errorCode:支付失败码
+     * errorMsg 支付失败信息
      */
-    fun onFail()
+    fun onFail(errorCode: Int, errorMsg: String)
 
     /**
      * 支付成功
