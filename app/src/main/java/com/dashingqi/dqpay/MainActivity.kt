@@ -2,6 +2,8 @@ package com.dashingqi.dqpay
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dashingqi.alipay.bean.AliPayBean
+import com.dashingqi.alipay.impl.AliPay
 import com.dashingqi.dqpay.callback.IPayCallback
 import com.dashingqi.dqpay.utils.PayUtils
 import com.dashingqi.wxpay.bean.WXPayInfoBean
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         //微信支付请求参数
         var wxPayInfoBean = WXPayInfoBean()
         wxPayInfoBean.appId = ""
-        wxPayInfoBean.nonceStr=""
+        wxPayInfoBean.nonceStr = ""
 
         //回调
         var wxPayCall = object : IPayCallback<WXPayInfoBean> {
@@ -48,6 +50,28 @@ class MainActivity : AppCompatActivity() {
     /**
      * 支付宝支付
      */
-    private fun aliPay(){
+    private fun aliPay() {
+
+        var aliPayBean = AliPayBean()
+        aliPayBean.orderInfo = ""
+
+        // 支付的回调
+        var aliPayCallback = object : IPayCallback<AliPayBean> {
+            override fun onCancel() {
+
+            }
+
+            override fun onFail() {
+
+            }
+
+            override fun onSuccess(data: AliPayBean) {
+
+            }
+
+        }
+
+        //发起支付宝支付
+        PayUtils.pay(AliPay(), this, aliPayBean, aliPayCallback)
     }
 }

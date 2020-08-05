@@ -1,7 +1,11 @@
+## DQPay使用文档
+- 目前该项目集成了微信支付和支付宝支付
+- 
+
 #### 微信支付使用步骤
 ###### 引入依赖
 ```
-implementation 'com.dashingqi:wxpay:0.9.5'
+implementation 'com.dashingqi:wxpay:0.9.9'
 ```
 ###### 新建WxEntryActivity（支付回调的Activity）
 - 新建Activity
@@ -59,10 +63,32 @@ class WxEntryActivity: WXPayActivity() {
 
 ###### 引入依赖
 ```
-implementation 'com.dashingqi:alipay:0.9.5'
+implementation 'com.dashingqi:alipay:0.9.9'
 ```
 ###### 发起支付宝支付请求
 - 步骤1：拿到支付请求数据实体
 ```kotlin
+   var aliPayBean = AliPayBean()
+   aliPayBean.orderInfo = ""
+```
+- 步骤2：传入支付回调，发起支付宝支付请求
+```kotlin
+        // 支付的回调
+        var aliPayCallback = object : IPayCallback<AliPayBean> {
+            override fun onCancel() {
 
+            }
+
+            override fun onFail() {
+
+            }
+
+            override fun onSuccess(data: AliPayBean) {
+
+            }
+
+        }
+
+        //发起支付宝支付
+        PayUtils.pay(AliPay(), this, aliPayBean, aliPayCallback)
 ```
