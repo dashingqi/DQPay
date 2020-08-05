@@ -1,5 +1,6 @@
 package com.dashingqi.wxpay.impl
 
+import android.app.Activity
 import android.content.Context
 import com.dashingqi.dqpay.callback.IPayCallback
 import com.dashingqi.dqpay.strategy.IPayStrategy
@@ -39,7 +40,7 @@ object WXPay : IPayStrategy<WXPayInfoBean> {
      * 支付的执行方法
      */
     override fun pay(
-        context: Context,
+        context: Activity,
         payInfo: WXPayInfoBean,
         callBack: IPayCallback<WXPayInfoBean>
     ) {

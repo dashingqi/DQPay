@@ -18,9 +18,13 @@ buildscript {
 }
 
 allprojects {
+    // 添加下面的内容
     repositories {
         google()
         jcenter()
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 

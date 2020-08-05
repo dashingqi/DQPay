@@ -1,5 +1,6 @@
 package com.dashingqi.dqpay.strategy
 
+import android.app.Activity
 import android.content.Context
 import com.dashingqi.dqpay.bean.IPayInfoBean
 import com.dashingqi.dqpay.callback.IPayCallback
@@ -11,5 +12,5 @@ import com.dashingqi.dqpay.callback.IPayCallback
  */
 interface IPayStrategy<T : IPayInfoBean> {
 
-    fun pay(context: Context, payInfo: T, callBack: IPayCallback<T>)
+    fun pay(context: Activity, payInfo: T, callBack: IPayCallback<T>)
 }

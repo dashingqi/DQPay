@@ -8,4 +8,10 @@ import com.dashingqi.dqpay.bean.IPayInfoBean
  * desc : 支付宝支付的数据Bean
  */
 class AliPayBean : IPayInfoBean {
+
+    /**
+     * 订单信息
+     */
+    var orderInfo: String = ""
+
 }
