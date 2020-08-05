@@ -13,7 +13,7 @@ import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
  * @time : 2020/7/31
  * desc : 微信支付回调预处理Activity
  */
-class WXPayActivity : Activity(), IWXAPIEventHandler {
+open class WXPayActivity : Activity(), IWXAPIEventHandler {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WXPay.getWxApi().handleIntent(intent, this)

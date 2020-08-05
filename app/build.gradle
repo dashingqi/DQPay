@@ -35,5 +35,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     api project(":dqpay")
     api project(":wxpay")
+//    api project(":alipay")
 
 }

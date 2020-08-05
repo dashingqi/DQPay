@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--        注册微信支付的回调处理的Activity-->
+        <activity
+            android:name=".wxapi.WxEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>
