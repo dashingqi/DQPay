@@ -1,6 +1,20 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    repoName = 'pay' //仓库名字
+    userOrg = 'dashingqi'      // bintray注册的用户名
+    groupId = 'com.dashingqi'
+    artifactId = 'wxpay' // bintray创建的package 仓库下面对应的package名字
+    publishVersion = '0.9.5'
+    desc = 'beta version'
+    bintrayUser = 'dashingqi'
+    bintrayKey = LocalBintrayKey()
+    dryRun = false
+}
+
 
 android {
     compileSdkVersion 29
@@ -32,7 +46,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation project(":dqpay")
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    implementation 'com.dashingqi:dqpay:1.0.0'
 
 }

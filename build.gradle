@@ -34,7 +34,7 @@ tasks.withType(Javadoc) {
     options.addStringOption('encoding', 'UTF-8')
 }
 
-def LocalDqPayBintrayKey() {
+def LocalBintrayKey() {
     Properties properties = new Properties()
     def file = rootProject.file('local.properties')
     if (file.exists()) {
