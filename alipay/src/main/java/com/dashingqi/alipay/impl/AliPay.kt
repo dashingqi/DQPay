@@ -59,17 +59,21 @@ class AliPay : IPayStrategy<AliPayBean> {
                         var resultStatus = payMapData[keyStr]
 
                         //支付成功
-                        if (resultStatus == AliConstant.ALI_PAY_SUCCESS) {
-                            mAliPayCallback?.let {
-                                it.onSuccess(mPayInfo)
+                        when (resultStatus) {
+                            AliConstant.ALI_PAY_SUCCESS -> {
+                                mAliPayCallback?.let {
+                                    it.onSuccess(mPayInfo)
+                                }
                             }
-                        } else if (resultStatus == AliConstant.ALI_PAY_CANCEL) {
-                            mAliPayCallback?.let {
-                                it.onCancel()
+                            AliConstant.ALI_PAY_CANCEL -> {
+                                mAliPayCallback?.let {
+                                    it.onCancel()
+                                }
                             }
-                        } else {
-                            mAliPayCallback?.let {
-                                it.onFail()
+                            else -> {
+                                mAliPayCallback?.let {
+                                    it.onFail()
+                                }
                             }
                         }
                     }
