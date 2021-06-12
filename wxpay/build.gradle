@@ -1,19 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.novoda.bintray-release'
-
-publish {
-    repoName = 'pay' //仓库名字
-    userOrg = 'dashingqi'      // bintray注册的用户名
-    groupId = 'com.dashingqi'
-    artifactId = 'wxpay' // bintray创建的package 仓库下面对应的package名字
-    publishVersion = '0.9.9.4'
-    desc = 'beta version'
-    bintrayUser = 'dashingqi'
-    bintrayKey = LocalBintrayKey()
-    dryRun = false
-}
+ext
+        {
+            PUBLISH_GROUP_ID = "io.github.dashingqi"        //项目包名
+            PUBLISH_ARTIFACT_ID = 'wxpay'            //项目名
+            PUBLISH_VERSION = '0.0.1'
+        }
+apply from: "publish-mavencentral.gradle"
 
 
 android {

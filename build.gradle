@@ -12,8 +12,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        // gradle插件版本不能高于 4.0 对应gradle-wrapper.properties文件中版本定位到 5.4.1
-        classpath 'com.novoda:bintray-release:0.9.2'
         // https://github.com/kezong/fat-aar-android/blob/master/README_CN.md
         // fat-aar提供了将library和它依赖的module一起打包成一个完整aar的解决方案
         classpath 'com.kezong:fat-aar:1.2.15'
