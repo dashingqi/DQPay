@@ -2,12 +2,9 @@
 buildscript {
     ext.kotlin_version = "1.3.72"
     repositories {
+        mavenCentral()
         google()
         jcenter()
-        maven {
-            url "https://dl.bintray.com/dashingqi/pay"
-        }
-
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
@@ -25,9 +22,9 @@ buildscript {
 allprojects {
     // 添加下面的内容
     repositories {
+        mavenCentral()
         google()
         jcenter()
-
     }
 }
 
@@ -39,14 +36,4 @@ task clean(type: Delete) {
 tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
     options.addStringOption('encoding', 'UTF-8')
-}
-
-def LocalBintrayKey() {
-    Properties properties = new Properties()
-    def file = rootProject.file('local.properties')
-    if (file.exists()) {
-        InputStream inputStream = file.newDataInputStream()
-        properties.load(inputStream)
-        properties.getProperty('dqPayBintrayKey')
-    }
 }
