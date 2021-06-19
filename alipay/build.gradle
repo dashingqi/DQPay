@@ -40,7 +40,6 @@ android {
 
 dependencies {
     // 添加下面的内容
-    implementation fileTree(dir: "libs", include: ["*.jar"])
     embed(name: 'alipaySdk-15.7.9-20200727142846', ext: 'aar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     api 'io.github.dashingqi:pay:0.0.3'
