@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.kezong.fat-aar'
 ext
         {
             PUBLISH_GROUP_ID = "io.github.dashingqi"        //项目包名
             PUBLISH_ARTIFACT_ID = 'alipay'            //项目名
-            PUBLISH_VERSION = '0.0.2'
+            PUBLISH_VERSION = '0.0.3'
         }
 apply from: "publish-mavencentral.gradle"
+apply plugin: 'com.kezong.fat-aar'
 
 android {
     compileSdkVersion 29
@@ -40,7 +40,8 @@ android {
 
 dependencies {
     // 添加下面的内容
-    embed(name: 'alipaySdk-15.7.9-20200727142846', ext: 'aar')
+    // embed(name: 'alipaySdk-15.7.9-20200727142846', ext: 'aar')
+    embed project(path: ':lib-alipay-aar', configuration: 'default')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     api 'io.github.dashingqi:pay:0.0.3'
 

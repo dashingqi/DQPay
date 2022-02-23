@@ -33,13 +33,13 @@ publishing {
             version PUBLISH_VERSION
 
             // Two artifacts, the `aar` and the sources
-            artifact("$buildDir/outputs/aar/${project.getName()}.aar")
+            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
             artifact androidSourcesJar
 
             // Self-explanatory metadata for the most part
             pom {
                 name = PUBLISH_ARTIFACT_ID
-                description = '支付宝支付'
+                description = 'alipay'
                 // If your project has a dedicated site, use its URL here
                 url = 'https://github.com/dashingqi/DQMaster'
                 licenses {

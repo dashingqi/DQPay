@@ -3,3 +3,4 @@ include ':wxpay'
 include ':dqpay'
 include ':app'
 rootProject.name = "DQPay"
+include ':lib-alipay-aar'

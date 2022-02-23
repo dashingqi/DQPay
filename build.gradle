@@ -2,17 +2,16 @@
 buildscript {
     ext.kotlin_version = "1.5.10"
     repositories {
-        mavenLocal()
         mavenCentral()
+        mavenLocal()
         google()
-        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
         // https://github.com/kezong/fat-aar-android/blob/master/README_CN.md
         // fat-aar提供了将library和它依赖的module一起打包成一个完整aar的解决方案
-        classpath 'com.kezong:fat-aar:1.2.15'
+        classpath 'com.github.kezong:fat-aar:1.3.7'
 
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -23,10 +22,9 @@ buildscript {
 allprojects {
     // 添加下面的内容
     repositories {
-        mavenLocal()
         mavenCentral()
+        mavenLocal()
         google()
-        jcenter()
     }
 }
 
